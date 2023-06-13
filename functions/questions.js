@@ -1,5 +1,6 @@
-import questions from './questions/geography.json'
-const CATEGORIES = ['geography','qwerty','zaq12wsx']
+const CATEGORIES = ['animals','brain-teasers','celebrities','entertainment','for-kids','general', 
+                    'geography','history','hobbies','humanities','literature','movies','newest','people','music',
+                    'rated','religion-faith','science-technology','sports','television','video-games','world']
 
 
 const isValidCategory = (word) =>{
@@ -10,6 +11,7 @@ const isValidCategory = (word) =>{
 }
 
 const parseCategory = (string) =>{
+    if(!string) return CATEGORIES
     let arr = []
     let word = ''
     for (let i = 0; i < string.length; i++) {
@@ -33,17 +35,29 @@ const parseCategory = (string) =>{
 
 }
 
+const getQuestions = (categories) => {
+    let arr = []
+    categories.forEach(category => {
+        arr.push(require(`./questions/${category}.json`))
+    })
+    return arr
+}
+
 
 exports.handler = async (event, context) => {
     const quantity = parseInt(event.queryStringParameters.q) || 1
     const selectedCategories = parseCategory(event.queryStringParameters.cat)
-
+    const questions = getQuestions(selectedCategories)
     
-   
-   
+    let response = []
 
+    for (let i = 0; i < quantity; i++) {
+        let randCategory = Math.floor(Math.random() * questions.length)
+        let randQuestion = Math.floor(Math.random() * questions[randCategory].length)
+        response.push(questions[randCategory][randQuestion])
+    }
     return {
         statusCode: 200,
-        body: JSON.stringify([questions[1]])
+        body: JSON.stringify(response)
     }
 }
