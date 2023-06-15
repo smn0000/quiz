@@ -1,10 +1,18 @@
-import CategorySelection from "./components/CategorySelection/CategorySelection"
+import Menu from "./pages/Menu/Menu"
+import Game from "./pages/Game/Game"
 import "./sass/global.scss"
+import { Routes, Route } from "react-router-dom"
+import { CategoriesProvider } from "./CategoriesContext"
 
 function App() {
   return (
     <>
-      <CategorySelection />
+      <CategoriesProvider>
+        <Routes>
+          <Route path="/" element={<Menu />} />
+          <Route path="/game" element={<Game />} />
+        </Routes>
+      </CategoriesProvider>
     </>
   )
 }
