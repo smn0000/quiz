@@ -1,11 +1,5 @@
 import { createContext, useState } from "react"
-
-type TCategoriesContext = {
-  categories: string[]
-  setCategories: (categories: string[]) => void
-  selectedCategories: string[]
-  setSelectedCategories: (categories: string[]) => void
-}
+import { TCategoriesContext } from "./interfaces"
 
 export const CategoriesContext = createContext<TCategoriesContext>({
   categories: [],
