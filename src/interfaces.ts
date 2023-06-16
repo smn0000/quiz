@@ -25,6 +25,6 @@ export type TCategoriesContext = {
 
 export type TAnswersContext = {
   answers: IAnswer[]
-  setAnswers: (answers: IAnswer[]) => void
+  addAnswer: (answers: IAnswer) => void
 
 }

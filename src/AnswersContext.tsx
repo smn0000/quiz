@@ -3,17 +3,21 @@ import { IAnswer, TAnswersContext } from "./interfaces"
 
 export const AnswersContext = createContext<TAnswersContext>({
   answers: [],
-  setAnswers: () => {},
+  addAnswer: () => {},
 })
 
-export const CategoriesProvider: React.FC<any> = ({ children }) => {
+export const AnswersProvider: React.FC<any> = ({ children }) => {
   const [answers, setAnswers] = useState<IAnswer[]>([])
+
+  const addAnswer = (newAnswer: IAnswer) => {
+    setAnswers((current) => [...current, newAnswer])
+  }
 
   return (
     <AnswersContext.Provider
       value={{
         answers,
-        setAnswers,
+        addAnswer,
       }}
     >
       {children}
