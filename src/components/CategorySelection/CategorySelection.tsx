@@ -43,8 +43,9 @@ const CategorySelection = () => {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {!isLoading && (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
         <Formik initialValues={{}} onSubmit={(values) => handleSubmit(values)}>
           {() => (
             <Form
@@ -52,16 +53,18 @@ const CategorySelection = () => {
                 isInvalid ? "invalid" : ""
               }`}
             >
-              <FieldArray name="categories">
-                {() =>
-                  categories.map((category) => (
-                    <label key={category}>
-                      {category}
-                      <Field name={category} type="checkbox" />
-                    </label>
-                  ))
-                }
-              </FieldArray>
+              <div className="category__selection__list">
+                <FieldArray name="categories">
+                  {() =>
+                    categories.map((category) => (
+                      <label key={category} className="category__label">
+                        {category}
+                        <Field name={category} type="checkbox" />
+                      </label>
+                    ))
+                  }
+                </FieldArray>
+              </div>
               <button type="submit">submit</button>
             </Form>
           )}

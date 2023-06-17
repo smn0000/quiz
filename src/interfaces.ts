@@ -13,7 +13,7 @@ export interface IQuestion {
 
 export interface IAnswer {
   question:IQuestion
-  selected: 'a' | 'b' | 'c' | 'd' | undefined
+  selected: string | undefined
 }
 
 export type TCategoriesContext = {
@@ -26,5 +26,5 @@ export type TCategoriesContext = {
 export type TAnswersContext = {
   answers: IAnswer[]
   addAnswer: (answers: IAnswer) => void
-
+  clearAnswers: () => void
 }

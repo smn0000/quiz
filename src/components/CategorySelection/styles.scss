@@ -2,8 +2,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
+  gap: 25px;
   &.invalid {
     border: 1px solid red;
+  }
+}
+
+.category__selection__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.category__label {
+  outline: 1px solid gray;
+  border-radius: 0.5rem;
+  height: 48px;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  width: 250px;
+
+  transition: outline-color 150ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:has(input:checked) {
+    outline: 2px solid purple;
+  }
+
+  input {
+    height: 50%;
+    aspect-ratio: 1;
   }
 }

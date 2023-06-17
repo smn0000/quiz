@@ -21,12 +21,16 @@ const Question = ({
       <div>
         <ul>
           <li
-            onClick={() => handleAnswer({ question: question, selected: "a" })}
+            onClick={() =>
+              handleAnswer({ question: question, selected: question.answer_a })
+            }
           >
             {question.answer_a}
           </li>
           <li
-            onClick={() => handleAnswer({ question: question, selected: "b" })}
+            onClick={() =>
+              handleAnswer({ question: question, selected: question.answer_b })
+            }
           >
             {question.answer_b}
           </li>
@@ -34,14 +38,20 @@ const Question = ({
             <>
               <li
                 onClick={() =>
-                  handleAnswer({ question: question, selected: "c" })
+                  handleAnswer({
+                    question: question,
+                    selected: question.answer_c,
+                  })
                 }
               >
                 {question.answer_c}
               </li>
               <li
                 onClick={() =>
-                  handleAnswer({ question: question, selected: "d" })
+                  handleAnswer({
+                    question: question,
+                    selected: question.answer_d,
+                  })
                 }
               >
                 {question.answer_d}

@@ -7,7 +7,7 @@ import { AnswersContext } from "../../AnswersContext"
 
 const Game = () => {
   const { selectedCategories } = useContext(CategoriesContext)
-  const { answers, addAnswer } = useContext(AnswersContext)
+  const { clearAnswers, addAnswer } = useContext(AnswersContext)
   const [questions, setQuestions] = useState<IQuestion[]>([])
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
@@ -21,6 +21,7 @@ const Game = () => {
       else cat += `,${selectedCategories[i]}`
     }
     setIsLoading(true)
+    clearAnswers()
     fetch(`/.netlify/functions/questions?cat=${cat}&q=3`)
       .then((res) => res.json())
       .then((data) => {
