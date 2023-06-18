@@ -41,6 +41,7 @@ const CategorySelection = () => {
       .catch(() => alert("Failed to fetch the categories! Try again."))
   }, [])
 
+  console.log(categories)
   return (
     <>
       {isLoading ? (
