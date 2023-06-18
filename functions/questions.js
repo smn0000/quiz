@@ -35,9 +35,10 @@ const parseCategory = (string) =>{
 
 const getQuestions = (categories) => {
     let arr = []
-    categories.forEach(category => {
-        arr.push(require(`./questions/${category}.json`))
-    })
+    for (let i = 0; i < categories.length; i++) {
+        arr.push(require(`./questions/${categories[i]}.json`))
+        
+    }
     return arr
 }
 
