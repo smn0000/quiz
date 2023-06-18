@@ -1,7 +1,7 @@
 import { AnswersContext } from "../../AnswersContext"
 import { IAnswer } from "../../interfaces"
 import "./styles.scss"
-import { useContext, useEffect, useMemo } from "react"
+import { useContext, useMemo } from "react"
 
 const getCorrectAnswersCount = (answers: IAnswer[]) => {
   let count = 0
