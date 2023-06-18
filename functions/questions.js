@@ -1,6 +1,6 @@
-import { Handler } from "@netlify/functions"
+
 import CATEGORIES from "./questions/CATEGORIES"
-import {IQuestion} from '../src/interfaces'
+
 
 const getQuantity = (event) => {
     if(!event.queryStringParameters.q) return 1
@@ -19,7 +19,7 @@ const parseCategory = (event) =>{
     if(!event.queryStringParameters.cat) return CATEGORIES
     let string = event.queryStringParameters.cat
 
-    let arr :string[] = []
+    let arr = []
     let word = ''
     for (let i = 0; i < string.length; i++) {
         if(string[i] === ',') {
@@ -40,7 +40,7 @@ const parseCategory = (event) =>{
 }
 
 const getQuestions = (categories) => {
-    let arr:IQuestion[][] = []
+    let arr = []
     for (let i = 0; i < categories.length; i++) {
         arr.push(require(`./questions/${categories[i]}.json`))
         
@@ -49,12 +49,13 @@ const getQuestions = (categories) => {
 }
 
 
-const handler:Handler = async (event) => {
+
+exports.handler = async (event) => {
     const quantity = getQuantity(event)
     const selectedCategories = parseCategory(event)
     const questions = getQuestions(selectedCategories)
     
-    let response: any[]= []
+    let response = []
 
     for (let i = 0; i < quantity; i++) {
         let randCategory = Math.floor(Math.random() * questions.length)
@@ -66,5 +67,3 @@ const handler:Handler = async (event) => {
         body: JSON.stringify(response)
     }
 }
-
-module.exports = {handler}
