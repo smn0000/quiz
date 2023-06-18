@@ -5,3 +5,4 @@ publish = "dist"
 
 [functions]
   included_files = ["questions/**"]
+  node_bundler = 'esbuild'
