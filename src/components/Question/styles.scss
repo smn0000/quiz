@@ -1,0 +1,37 @@
+.question__wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question {
+  width: 50%;
+}
+
+.question__text {
+  margin-bottom: 1em;
+}
+
+.question__answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 15px;
+}
+
+.question__answer {
+  height: 64px;
+  padding-inline: 1rem;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 1px solid purple;
+  border-radius: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

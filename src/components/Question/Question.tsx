@@ -16,20 +16,29 @@ const Question = ({
   }, [])
 
   return (
-    <div>
-      <div>{question?.question}</div>
-      <div>
-        <ul>
+    <div className="question__wrapper">
+      <div className="question">
+        <h2 className="question__text">{question?.question}</h2>
+
+        <ul className="question__answers">
           <li
+            className="question__answer"
             onClick={() =>
-              handleAnswer({ question: question, selected: question.answer_a })
+              handleAnswer({
+                question: question,
+                selected: question.answer_a,
+              })
             }
           >
             {question.answer_a}
           </li>
           <li
+            className="question__answer"
             onClick={() =>
-              handleAnswer({ question: question, selected: question.answer_b })
+              handleAnswer({
+                question: question,
+                selected: question.answer_b,
+              })
             }
           >
             {question.answer_b}
@@ -37,6 +46,7 @@ const Question = ({
           {question.answer_c && question.answer_d && (
             <>
               <li
+                className="question__answer"
                 onClick={() =>
                   handleAnswer({
                     question: question,
@@ -47,6 +57,7 @@ const Question = ({
                 {question.answer_c}
               </li>
               <li
+                className="question__answer"
                 onClick={() =>
                   handleAnswer({
                     question: question,

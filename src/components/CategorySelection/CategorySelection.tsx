@@ -48,11 +48,10 @@ const CategorySelection = () => {
       ) : (
         <Formik initialValues={{}} onSubmit={(values) => handleSubmit(values)}>
           {() => (
-            <Form
-              className={`category__selection__form ${
-                isInvalid ? "invalid" : ""
-              }`}
-            >
+            <Form className={`category__selection__form`}>
+              {isInvalid && (
+                <div className="error__message">Select at least 1 category</div>
+              )}
               <div className="category__selection__list">
                 <FieldArray name="categories">
                   {() =>
@@ -65,7 +64,9 @@ const CategorySelection = () => {
                   }
                 </FieldArray>
               </div>
-              <button type="submit">submit</button>
+              <button type="submit" className="category__selection__button">
+                START
+              </button>
             </Form>
           )}
         </Formik>
