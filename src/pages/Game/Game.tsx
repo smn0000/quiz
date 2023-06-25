@@ -23,7 +23,7 @@ const Game = () => {
     }
     setIsLoading(true)
     clearAnswers()
-    fetch(`/.netlify/functions/questions?cat=${cat}&q=5`)
+    fetch(`/.netlify/functions/questions?cat=${cat}&q=15`)
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data)
