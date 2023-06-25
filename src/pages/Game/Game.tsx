@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { IAnswer, IQuestion } from "../../interfaces"
 import Question from "../../components/Question/Question"
 import { AnswersContext } from "../../AnswersContext"
+import Loading from "../../components/Loading/Loading"
 
 const Game = () => {
   const { selectedCategories } = useContext(CategoriesContext)
@@ -22,7 +23,7 @@ const Game = () => {
     }
     setIsLoading(true)
     clearAnswers()
-    fetch(`/.netlify/functions/questions?cat=${cat}&q=3`)
+    fetch(`/.netlify/functions/questions?cat=${cat}&q=15`)
       .then((res) => res.json())
       .then((data) => {
         setQuestions(data)
@@ -42,7 +43,7 @@ const Game = () => {
   }
   return (
     <>
-      {isLoading && <div>Loading</div>}
+      {isLoading && <Loading />}
       {questions.length > 0 && (
         <Question
           question={questions[currentQuestion]}

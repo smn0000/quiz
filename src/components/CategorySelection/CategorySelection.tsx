@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { IFormValues } from "../../interfaces"
 import { useContext } from "react"
 import { CategoriesContext } from "../../CategoriesContext"
+import Loading from "../Loading/Loading"
 
 const CategorySelection = () => {
   const { categories, setCategories, setSelectedCategories } =
@@ -45,7 +46,7 @@ const CategorySelection = () => {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loading />
       ) : (
         <Formik initialValues={{}} onSubmit={(values) => handleSubmit(values)}>
           {() => (
