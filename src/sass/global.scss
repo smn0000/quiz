@@ -6,10 +6,16 @@
   min-height: 100vh;
   background-color: rgb(8, 10, 29);
   color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
   font-size: 64px;
+  text-transform: uppercase;
+
+  @media (max-width: 425px) {
+    font-size: 48px;
+  }
 }
 
 h2 {
