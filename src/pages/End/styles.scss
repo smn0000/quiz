@@ -1,0 +1,20 @@
+.end {
+  width: 70%;
+  margin-inline: auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.end__button {
+  color: white;
+  background-color: transparent;
+  border: none;
+  margin-top: 2rem;
+  padding: 2rem 5rem;
+  font-size: 24px;
+  border-radius: 0.5rem;
+  border: 2px solid purple;
+}
